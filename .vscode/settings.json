@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.umi": true,
+    "**/package.json": true,
+    "**/tsconfig.json": true,
+    ".vscode": true,
+    ".editorconfig": true,
+    ".npmignore": true,
+    ".gitignore": true,
+    ".prettierrc": true,
+    ".prettierignore": true,
+    "yarn.lock": true,
+    "typings.d.ts": true,
+    "node_modules": true
+  }
+}
