@@ -1,3 +1,3 @@
-import schema from './schema'
+import SchemaRQ from './schema'
 
-export { schema }
+export { SchemaRQ }

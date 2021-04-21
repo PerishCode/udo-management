@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import { Collapse } from 'antd'
 import { Preview } from '@/components'
-import { schema as SchemaRQ } from '@/requests'
+import { SchemaRQ } from '@/requests'
+
+const { Panel } = Collapse
 
 export default function Page() {
   const [schemas, setSchemas] = useState([])
@@ -11,9 +14,13 @@ export default function Page() {
 
   return (
     <div className="page schema all">
-      {schemas.map((schema: any) => (
-        <Preview schema={schema.content} key={schema.id} className="preview" />
-      ))}
+      <Collapse>
+        {schemas.map((schema: any) => (
+          <Panel key={schema.id} header={schema.id}>
+            <Preview schema={schema.content} className="preview" />
+          </Panel>
+        ))}
+      </Collapse>
     </div>
   )
 }

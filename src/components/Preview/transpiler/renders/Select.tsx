@@ -1,21 +1,24 @@
+import { Select as Antd_Select } from 'antd'
 import { aggregatedOperation as Do } from '@x-form/react'
+
+const { Option } = Antd_Select
 
 export default function Select({ schema }) {
   return (
-    <select
-      value={schema.data || ''}
-      onChange={(e: any) =>
+    <Antd_Select
+      value={schema.data}
+      onChange={(v: any) =>
         Do(() => {
-          schema.data = e.target.value
+          schema.data = v
         })
       }
     >
-      <option value="">-------</option>
+      {/* <Option value="">-------</Option> */}
       {schema.enum.map((item, index) => (
-        <option value={item} key={index}>
+        <Option value={item} key={index}>
           {item}
-        </option>
+        </Option>
       ))}
-    </select>
+    </Antd_Select>
   )
 }

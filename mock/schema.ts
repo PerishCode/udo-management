@@ -1,6 +1,6 @@
 let schemas = [
   {
-    id: 'author',
+    id: 'Author',
     content: {
       type: 'object',
       title: '作者',
@@ -13,6 +13,38 @@ let schemas = [
           type: 'string',
           title: '性别',
           enum: ['男', '女'],
+        },
+      },
+    },
+  },
+  {
+    id: 'Paper',
+    content: {
+      type: 'object',
+      title: '论文',
+      properties: {
+        title: {
+          type: 'string',
+          title: '标题',
+        },
+        authors: {
+          type: 'array',
+          display: 'list',
+          title: '相关作者',
+          template: {
+            type: 'object',
+            properties: {
+              name: {
+                type: 'string',
+                title: '姓名',
+              },
+              sign: {
+                type: 'string',
+                title: '贡献',
+                enum: ['第一作者', '第二作者'],
+              },
+            },
+          },
         },
       },
     },

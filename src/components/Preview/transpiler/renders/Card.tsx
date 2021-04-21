@@ -1,8 +1,9 @@
+import { Card as Antd_Card } from 'antd'
+
 export default function Card({ schema: { title }, children }) {
   return (
-    <div>
-      <div>{title}</div>
-      <div>{children}</div>
-    </div>
+    <Antd_Card title={title} size="small">
+      {children}
+    </Antd_Card>
   )
 }
