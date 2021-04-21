@@ -1,41 +1,32 @@
 import { useEffect, useRef } from 'react'
-import JE, { JSONEditorOptions } from 'jsoneditor'
-import 'jsoneditor/dist/jsoneditor.css'
+import JE from 'jsoneditor'
 
-interface Props {
-  json?: any
-  mode: string
-  hideMenu?: boolean
-  onChange?: Function
-}
-
-export default function JSONEditor(props: Props) {
-  const containerRef = useRef<any>(null)
-  const editor = useRef<any>(null)
-
-  const options = {
-    mode: props.mode,
-    mainMenuBar: props.hideMenu === undefined || props.hideMenu === false,
-    onChange: function () {
-      try {
-        const json = editor.current.get()
-        props.onChange && props.onChange(json)
-      } catch (err) {}
-    },
-  } as JSONEditorOptions
+export default function Editor({ onChange, json = null, className = '' }: any) {
+  const containerRef = useRef(null as any)
+  const editorRef = useRef(null as any)
+  const jsonRef = useRef(null as any)
 
   useEffect(() => {
-    editor.current = new JE(containerRef.current, options, null)
+    editorRef.current = new JE(
+      containerRef.current,
+      {
+        mode: 'code',
+        mainMenuBar: false,
+        onChange() {
+          try {
+            const result = editorRef.current.get()
+            jsonRef.current = result
+            onChange && onChange(jsonRef.current)
+          } catch (error) {}
+        },
+      },
+      null,
+    )
   }, [])
 
   useEffect(() => {
-    if (
-      editor.current.get() === null ||
-      editor.current.getText() === '{}' ||
-      props.mode === 'view'
-    )
-      editor.current.set(props.json)
-  }, [props.json])
+    jsonRef.current !== json && editorRef.current.set((jsonRef.current = json))
+  }, [json])
 
-  return <div ref={containerRef} className="component JSONEditor container" />
+  return <div ref={containerRef} className={className} />
 }

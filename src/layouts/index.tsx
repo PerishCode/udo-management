@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { history } from 'umi'
 import { Layout, Menu } from 'antd'
 import { Icon } from '@/components'
+
+import 'jsoneditor/dist/jsoneditor.css'
 import './index.less'
 
 const { Content, Sider } = Layout

@@ -1,5 +1,38 @@
 #root,
-.ant-layout.basic {
+.ant-layout.basic,
+.page {
   height: 100%;
   width: 100%;
+}
+
+.jsoneditor {
+  border: none;
+}
+
+.page.new {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'a b'
+    'c b';
+  grid-gap: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+
+  > .editor {
+    grid-area: a;
+  }
+
+  > .form {
+    grid-area: b;
+  }
+
+  > .preview {
+    grid-area: c;
+  }
+
+  > * {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  }
 }

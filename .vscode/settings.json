@@ -5,6 +5,7 @@
     "**/package.json": true,
     "**/tsconfig.json": true,
     ".vscode": true,
+    ".umirc.ts": true,
     ".editorconfig": true,
     ".npmignore": true,
     ".gitignore": true,
