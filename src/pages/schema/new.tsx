@@ -39,7 +39,7 @@ export default function App() {
           title: '出版情况',
           properties: {
             time: {
-              type: 'string',
+              type: 'date',
               title: '出版时间',
             },
             press: {
