@@ -24,7 +24,7 @@ export default function BasicLayout({ children }) {
     <Layout className="basic">
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
         <Menu theme="dark" mode="inline">
-          {Link('Schema管理', 'iconschema', '/schema')}
+          {Link('Schema管理', 'u-schema', '/schema')}
         </Menu>
       </Sider>
       <Layout>

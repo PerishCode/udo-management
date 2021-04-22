@@ -6,7 +6,10 @@ export default function List({ schema, children }) {
   return Array.isArray(children) ? (
     <Antd_List>
       {children.map((child, index) => (
-        <Item key={index}>{child}</Item>
+        <Item key={index}>
+          <span className="serial">{index + 1}</span>
+          {child}
+        </Item>
       ))}
     </Antd_List>
   ) : (

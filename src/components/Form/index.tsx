@@ -1,14 +1,7 @@
-import XForm from '@x-form/react-jsonschema'
-import transpile from './transpiler'
+import Preview from './Preview'
+import Default from './Default'
 
-export default function Form({ schema, formData, onChange, className }) {
-  return (
-    <XForm
-      schema={schema}
-      formData={formData}
-      onChange={onChange}
-      className={className}
-      extensions={{ transpile }}
-    />
-  )
+export default {
+  Preview,
+  Default,
 }

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Form, Editor, Viewer } from '@/components'
 
+const { Default } = Form
+
 export default function App() {
   const [formData, setFormData] = useState([])
   const [schema, setSchema] = useState({
@@ -55,7 +57,7 @@ export default function App() {
   return (
     <div className="page schema new">
       <Editor className="editor" json={schema} onChange={setSchema} />
-      <Form
+      <Default
         className="form"
         schema={schema}
         formData={formData}

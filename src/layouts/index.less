@@ -40,6 +40,12 @@
   }
 }
 
+.page.schema.all {
+  > button {
+    margin-bottom: 5px;
+  }
+}
+
 .ant-row {
   margin-bottom: 5px;
 }
@@ -49,7 +55,20 @@
   font-weight: 600;
 }
 
-.ant-input,
-.ant-select {
-  width: 10rem;
+.ant-list-item {
+  gap: 5px;
+
+  > .serial {
+    width: 20px;
+    font-weight: 600;
+
+    &:after {
+      content: '.';
+    }
+  }
+
+  .ant-input,
+  .ant-select {
+    flex: 1 1 10rem;
+  }
 }
