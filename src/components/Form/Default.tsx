@@ -26,6 +26,9 @@ const generators = [
       case 'date':
         renders.push(DatePicker)
         break
+      case 'link':
+        renders.push(Link)
+        break
     }
   },
 

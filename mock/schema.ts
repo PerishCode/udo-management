@@ -36,6 +36,7 @@ let schemas = [
             properties: {
               name: {
                 type: 'link',
+                to: 'Author',
                 title: '作者',
               },
               sign: {
