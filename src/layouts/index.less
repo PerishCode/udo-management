@@ -13,11 +13,13 @@
   padding: 10px;
 }
 
-.page.new {
+.page.new,
+.page.single {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 30px 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
+    'd b'
     'a b'
     'c b';
   grid-gap: 8px;
@@ -35,7 +37,11 @@
     grid-area: c;
   }
 
-  > * {
+  > .extra {
+    grid-area: d;
+  }
+
+  > div {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   }
 }
@@ -53,6 +59,10 @@
 .ant-card-head-title {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.ant-card-body {
+  padding: 5px;
 }
 
 .ant-list-item {

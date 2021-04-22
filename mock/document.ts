@@ -1,7 +1,7 @@
 let documents = [
   {
     id: '00000001',
-    schema: 'author',
+    schema: 'Author',
     content: {
       name: '张三',
       sex: '男',
@@ -10,8 +10,12 @@ let documents = [
 ] as any
 
 export default {
-  'GET /api/document': (_, res) => {
-    res.send(documents)
+  'GET /api/document': ({ query: { schema } }, res) => {
+    res.send(
+      schema === undefined
+        ? documents
+        : documents.filter(document => document.schema === schema),
+    )
   },
 
   'GET /api/document/:id': ({ params: { id } }, res) => {

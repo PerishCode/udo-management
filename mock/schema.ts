@@ -35,8 +35,8 @@ let schemas = [
             type: 'object',
             properties: {
               name: {
-                type: 'string',
-                title: '姓名',
+                type: 'link',
+                title: '作者',
               },
               sign: {
                 type: 'string',
@@ -74,6 +74,7 @@ export default {
       id,
       content: body,
     }
+
     schemas = schemas.map(s => (s.id === id ? schema : s))
     res.send(schema)
   },

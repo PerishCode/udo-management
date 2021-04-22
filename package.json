@@ -30,7 +30,7 @@
     "@umijs/test": "^3.4.10",
     "@x-form/model": "^0.0.1",
     "@x-form/react": "^0.0.2",
-    "@x-form/react-jsonschema": "^0.0.3",
+    "@x-form/react-jsonschema": "^0.0.4",
     "antd": "^4.15.2",
     "jsoneditor": "^9.4.0",
     "lint-staged": "^10.0.7",

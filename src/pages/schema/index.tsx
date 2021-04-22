@@ -26,7 +26,15 @@ export default function Page() {
       </Button>
       <Collapse>
         {schemas.map((schema: any) => (
-          <Panel key={schema.id} header={schema.id}>
+          <Panel
+            key={schema.id}
+            header={schema.id}
+            extra={
+              <Button onClick={() => history.push('/schema/' + schema.id)}>
+                编辑
+              </Button>
+            }
+          >
             <Preview schema={schema.content} className="preview" />
           </Panel>
         ))}

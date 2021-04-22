@@ -1,58 +1,22 @@
 import { useState } from 'react'
+import { history } from 'umi'
+import { Input, Button, Row, Col, message } from 'antd'
 import { Form, Editor, Viewer } from '@/components'
+import { SchemaRQ } from '@/requests'
 
 const { Default } = Form
 
-export default function App() {
-  const [formData, setFormData] = useState([])
-  const [schema, setSchema] = useState({
-    type: 'array',
-    title: '用户列表',
-    template: {
-      type: 'object',
-      title: '用户信息',
-      properties: {
-        name: {
-          title: '教材名称',
-          type: 'string',
-        },
-        authors: {
-          title: '作者',
-          type: 'array',
-          template: {
-            type: 'object',
-            properties: {
-              name: {
-                title: '姓名',
-                type: 'link',
-                to: 'author',
-                use: 'name',
-              },
-              sign: {
-                title: '署名',
-                type: 'string',
-                enum: ['主编', '副主编'],
-              },
-            },
-          },
-        },
-        publish: {
-          type: 'object',
-          title: '出版情况',
-          properties: {
-            time: {
-              type: 'date',
-              title: '出版时间',
-            },
-            press: {
-              type: 'string',
-              title: '出版社',
-            },
-          },
-        },
-      },
-    },
-  })
+export default function Page() {
+  const [formData, setFormData] = useState(null)
+  const [schema, setSchema] = useState({})
+  const [id, setId] = useState('')
+
+  function createHandler() {
+    SchemaRQ.create(id, schema).then(() => {
+      message.success('创建成功 正在跳转', 1)
+      history.push('/schema/' + id)
+    })
+  }
 
   return (
     <div className="page schema new">
@@ -64,6 +28,16 @@ export default function App() {
         onChange={setFormData}
       />
       <Viewer className="preview" json={formData} />
+      <Row className="extra">
+        <Col span={20}>
+          <Input value={id} onChange={e => setId(e.target.value)} />
+        </Col>
+        <Col span={4}>
+          <Button block onClick={createHandler}>
+            创建
+          </Button>
+        </Col>
+      </Row>
     </div>
   )
 }

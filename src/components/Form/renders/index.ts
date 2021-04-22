@@ -1,8 +1,11 @@
+import HOC from '../HOC'
+
 /* 基本组件 */
 import Input from './Input'
 import DatePicker from './DatePicker'
 import Select from './Select'
 import Link from './Link'
+import Info from './Info'
 /* ------- */
 
 /* 高级组件 */
@@ -16,7 +19,7 @@ import Divider from './Divider'
 import Label from './Label'
 /* ------- */
 
-export default {
+const renders = {
   Input,
   DatePicker,
   Select,
@@ -26,4 +29,9 @@ export default {
   Card,
   Label,
   Divider,
+  Info,
 }
+
+Object.keys(renders).forEach(key => (renders[key] = HOC(renders[key])))
+
+export default renders

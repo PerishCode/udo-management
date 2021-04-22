@@ -1,7 +1,7 @@
 import { __render__ } from '@x-form/react'
 import XForm, { TranspilerFactory } from '@x-form/react-jsonschema'
-import renders from './renders'
 import { __depth__, __label__ } from './HOC'
+import renders from './renders'
 
 const {
   Input,
@@ -13,6 +13,7 @@ const {
   DatePicker,
   Divider,
   List,
+  Info,
 } = renders
 
 const generators = [
@@ -21,10 +22,10 @@ const generators = [
 
     switch (schema.type) {
       case 'string':
-        renders.push(schema.enum ? Select : Input)
+        renders.push(Info)
         break
       case 'date':
-        renders.push(DatePicker)
+        renders.push(Info)
         break
     }
   },
@@ -52,13 +53,9 @@ const generators = [
 const injectors = [
   // 计算数据项深度并赋值
   (schema, params) => {
-    const { type } = schema
-
     const depth = params[__depth__] ?? 0
     schema[__depth__] = depth
-
-    type === 'object' && (params[__depth__] = depth + 1)
-    type === 'array' && (params[__depth__] = depth + 1)
+    params[__depth__] = depth + 1
   },
   // 判断是否为 title 属性插入容器组件
   (schema, params) => {
@@ -73,7 +70,12 @@ const transpile = TranspilerFactory({
   generators,
 })
 
-export default function Default({ schema, className, formData, onChange }) {
+export default function ReadOnly({
+  schema,
+  className,
+  formData = null,
+  onChange = _ => {},
+}) {
   return (
     <XForm
       schema={schema}

@@ -1,9 +1,7 @@
 import { __render__ } from '@x-form/react'
 import XForm, { TranspilerFactory } from '@x-form/react-jsonschema'
+import { __depth__, __label__ } from './HOC'
 import renders from './renders'
-import HOC, { __depth__, __label__ } from './HOC'
-
-Object.keys(renders).forEach(key => (renders[key] = HOC(renders[key])))
 
 const {
   Input,
@@ -74,7 +72,7 @@ const transpile = TranspilerFactory({
 export default function Preview({
   schema,
   className,
-  formData = {},
+  formData = null,
   onChange = _ => {},
 }) {
   return (
