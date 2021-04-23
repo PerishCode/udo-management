@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { aggregatedOperation as Do } from '@x-form/react'
-import { Select } from 'antd'
+import XForm, { Do } from '@x-form/react-jsonschema'
+import { Select, Popover } from 'antd'
 import { SchemaRQ, DocumentRQ } from '@/requests'
+import { Form } from '@/components'
 
 const { Option } = Select
 
@@ -16,17 +17,27 @@ export default function Link({ schema }) {
 
     SchemaRQ.get(to).then(schema_response =>
       DocumentRQ.getAll('?schema=' + to).then(documents_response => {
-        setLinkSchema(schema_response)
+        setLinkSchema(schema_response.content)
         setDocuments(documents_response)
       }),
     )
   }, [])
 
   return (
-    <Select onChange={u => Do(() => (schema.data = u))}>
+    <Select value={schema.data} onChange={u => Do(() => (schema.data = u))}>
       {documents.map((document: any) => (
         <Option key={document.id} value={document.id}>
-          {document.id}
+          <Popover
+            content={
+              <XForm
+                schema={linkSchema}
+                formData={document.content}
+                extensions={Form.Mini}
+              />
+            }
+          >
+            {document.id}
+          </Popover>
         </Option>
       ))}
     </Select>

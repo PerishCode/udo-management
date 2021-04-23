@@ -8,7 +8,12 @@ const ReadOnly = {
   transpile: transpilers.ReadOnly,
 }
 
+const Mini = {
+  transpile: transpilers.Mini,
+}
+
 export default {
   Default,
   ReadOnly,
+  Mini,
 }

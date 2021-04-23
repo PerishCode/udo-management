@@ -32,7 +32,10 @@ export default function BasicLayout({ children }) {
             {schemas.map(s => (
               <Item
                 key={s.id}
-                onClick={() => history.push('/document?schema=' + s.id)}
+                onClick={() => {
+                  history.push('/document?schema=' + s.id)
+                  location.reload()
+                }}
               >
                 {s.id}
               </Item>
