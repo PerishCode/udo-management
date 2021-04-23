@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { history } from 'umi'
-import { Button, Collapse } from 'antd'
+import { Button, Collapse, message } from 'antd'
 import XForm from '@x-form/react-jsonschema'
 import { DocumentRQ, SchemaRQ } from '@/requests'
 import { Form } from '@/components'
@@ -27,6 +27,13 @@ export default function Page({
     )
   }, [])
 
+  function deleteHandler(id) {
+    DocumentRQ.delete(id).then(() => {
+      setDocuments(documents.filter(d => d.id !== id))
+      message.success('删除成功', 0.5)
+    })
+  }
+
   return (
     <div className="page document all">
       <Button
@@ -43,9 +50,12 @@ export default function Page({
             key={id}
             header={id}
             extra={
-              <Button onClick={() => history.push('/document/' + id)}>
-                编辑
-              </Button>
+              <>
+                <Button onClick={() => history.push('/document/' + id)}>
+                  编辑
+                </Button>
+                <Button onClick={() => deleteHandler(id)}>删除</Button>
+              </>
             }
           >
             <XForm

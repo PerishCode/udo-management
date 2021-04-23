@@ -27,7 +27,6 @@ export default function Page({
       message.success('创建成功,即将跳转', 0.5, () =>
         history.push('/document/' + id),
       )
-      // history.push('/document/' + id)
     })
   }
 

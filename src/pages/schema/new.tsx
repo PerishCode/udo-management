@@ -14,10 +14,11 @@ export default function Page() {
   const [id, setId] = useState('')
 
   function createHandler() {
-    SchemaRQ.create(id, schema).then(() => {
-      message.success('创建成功 正在跳转', 1)
-      history.push('/schema/' + id)
-    })
+    SchemaRQ.create(id, schema).then(() =>
+      message.success('创建成功,即将跳转', 0.5, () =>
+        history.push('/schema/' + id),
+      ),
+    )
   }
 
   return (

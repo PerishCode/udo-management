@@ -23,4 +23,9 @@ export default {
       }),
     }).then(res => res.json())
   },
+  delete(id) {
+    return fetch('/api/document/' + id, {
+      method: 'DELETE',
+    }).then(res => res.text())
+  },
 }
