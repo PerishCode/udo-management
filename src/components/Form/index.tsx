@@ -1,9 +1,14 @@
-import Preview from './Preview'
-import Default from './Default'
-import ReadOnly from './ReadOnly'
+import transpilers from './transpilers'
+
+const Default = {
+  transpile: transpilers.Default,
+}
+
+const ReadOnly = {
+  transpile: transpilers.ReadOnly,
+}
 
 export default {
-  Preview,
   Default,
   ReadOnly,
 }

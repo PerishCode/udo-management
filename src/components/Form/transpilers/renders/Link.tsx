@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { aggregatedOperation as Do } from '@x-form/react'
 import { Select } from 'antd'
-import { DocumentRQ, SchemaRQ } from '@/requests'
+import { SchemaRQ, DocumentRQ } from '@/requests'
 
 const { Option } = Select
 

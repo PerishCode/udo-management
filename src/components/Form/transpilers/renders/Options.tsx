@@ -10,6 +10,7 @@ function Options({ schema, children }) {
       block
       size="large"
       shape="round"
+      key="options-initialize"
       onClick={() => Do(() => (schema.items = [{}]))}
     >
       {initialText || '初始化数据项'}
@@ -18,12 +19,12 @@ function Options({ schema, children }) {
     children.map((child, index) => {
       const operators = [
         <Button
-          key="create"
+          key="options-create"
           onClick={_ => Do(() => items.splice(index + 1, 0, {}))}
           icon={<PlusOutlined />}
         />,
         <Button
-          key="delete"
+          key="options-delete"
           onClick={_ => Do(() => items.splice(index, 1))}
           icon={<CloseOutlined />}
         />,

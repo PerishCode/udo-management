@@ -14,9 +14,7 @@ export default function Editor({ onChange, json = null, className = '' }: any) {
         mainMenuBar: false,
         onChange() {
           try {
-            const result = editorRef.current.get()
-            jsonRef.current = result
-            onChange && onChange(jsonRef.current)
+            onChange && onChange((jsonRef.current = editorRef.current.get()))
           } catch (error) {}
         },
       },

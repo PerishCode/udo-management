@@ -1,4 +1,4 @@
-import HOC from '../HOC'
+import HOC, { __depth__, __label__ } from './HOC'
 
 /* 基本组件 */
 import Input from './Input'
@@ -35,3 +35,5 @@ const renders = {
 Object.keys(renders).forEach(key => (renders[key] = HOC(renders[key])))
 
 export default renders
+
+export { __depth__, __label__ }

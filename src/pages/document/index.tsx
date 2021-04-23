@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Collapse } from 'antd'
+import { history } from 'umi'
+import { Button, Collapse } from 'antd'
+import XForm from '@x-form/react-jsonschema'
 import { DocumentRQ, SchemaRQ } from '@/requests'
 import { Form } from '@/components'
 
 const { Panel } = Collapse
-const { ReadOnly } = Form
 
 export default function Page({
   location: {
@@ -28,13 +29,30 @@ export default function Page({
 
   return (
     <div className="page document all">
+      <Button
+        block
+        type="primary"
+        size="large"
+        onClick={() => history.push('/document/new' + search)}
+      >
+        新建
+      </Button>
       <Collapse>
-        {documents.map((document: any) => (
-          <Panel key={document.id} header={document.id}>
-            <ReadOnly
+        {documents.map(({ id, content }: any) => (
+          <Panel
+            key={id}
+            header={id}
+            extra={
+              <Button onClick={() => history.push('/document/' + id)}>
+                编辑
+              </Button>
+            }
+          >
+            <XForm
               className="readonly"
               schema={schema.content}
-              formData={document.content}
+              formData={content}
+              extensions={Form.ReadOnly}
             />
           </Panel>
         ))}

@@ -13,8 +13,16 @@
   padding: 10px;
 }
 
-.page.new,
-.page.single {
+.page.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  font-weight: 800;
+}
+
+.page.schema.new,
+.page.schema.single {
   display: grid;
   grid-template-rows: 30px 1fr 1fr;
   grid-template-columns: 1fr 1fr;
@@ -46,7 +54,8 @@
   }
 }
 
-.page.schema.all {
+.page.all,
+.page.document {
   > button {
     margin-bottom: 5px;
   }

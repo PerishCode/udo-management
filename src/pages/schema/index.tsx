@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { history } from 'umi'
 import { Collapse, Button } from 'antd'
+import XForm from '@x-form/react-jsonschema'
 import { Form } from '@/components'
 import { SchemaRQ } from '@/requests'
 
 const { Panel } = Collapse
-const { Preview } = Form
 
 export default function Page() {
   const [schemas, setSchemas] = useState([])
@@ -35,7 +35,11 @@ export default function Page() {
               </Button>
             }
           >
-            <Preview schema={schema.content} className="preview" />
+            <XForm
+              schema={schema.content}
+              className="preview"
+              extensions={Form.Default}
+            />
           </Panel>
         ))}
       </Collapse>

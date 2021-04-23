@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { history } from 'umi'
 import { Input, Button, Row, Col, message } from 'antd'
+import XForm from '@x-form/react-jsonschema'
 import { Form, Editor, Viewer } from '@/components'
 import { SchemaRQ } from '@/requests'
 
-const { Default } = Form
-
 export default function Page() {
   const [formData, setFormData] = useState(null)
-  const [schema, setSchema] = useState({})
+  const [schema, setSchema] = useState({
+    type: 'string',
+    title: '数据',
+  })
   const [id, setId] = useState('')
 
   function createHandler() {
@@ -21,11 +23,12 @@ export default function Page() {
   return (
     <div className="page schema new">
       <Editor className="editor" json={schema} onChange={setSchema} />
-      <Default
+      <XForm
         className="form"
         schema={schema}
         formData={formData}
         onChange={setFormData}
+        extensions={Form.Default}
       />
       <Viewer className="preview" json={formData} />
       <Row className="extra">
