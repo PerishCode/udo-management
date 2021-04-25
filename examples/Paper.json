@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "title": "论文",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "标题"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "link",
+          "to": "Author",
+          "title": "作者"
+        },
+        "sign": {
+          "type": "string",
+          "title": "贡献",
+          "enum": ["第一作者", "第二作者"]
+        }
+      }
+    }
+  }
+}

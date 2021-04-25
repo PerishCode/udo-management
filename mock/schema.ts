@@ -53,15 +53,15 @@ let schemas = [
 ]
 
 export default {
-  'GET /api/schema': (_, res) => {
+  'GET /mock/schema': (_, res) => {
     res.send(schemas)
   },
 
-  'GET /api/schema/:id': ({ params: { id } }, res) => {
+  'GET /mock/schema/:id': ({ params: { id } }, res) => {
     res.send(schemas.find(schema => schema.id === id))
   },
 
-  'POST /api/schema/:id': ({ params: { id }, body }, res) => {
+  'POST /mock/schema/:id': ({ params: { id }, body }, res) => {
     const schema = {
       id,
       content: body,
@@ -70,7 +70,7 @@ export default {
     res.send(schema)
   },
 
-  'PUT /api/schema/:id': ({ params: { id }, body }, res) => {
+  'PUT /mock/schema/:id': ({ params: { id }, body }, res) => {
     const schema = {
       id,
       content: body,
@@ -80,7 +80,7 @@ export default {
     res.send(schema)
   },
 
-  'DELETE /api/schema/:id': ({ params: { id } }, res) => {
+  'DELETE /mock/schema/:id': ({ params: { id } }, res) => {
     schemas = schemas.filter(s => s.id !== id)
     res.send(id)
   },

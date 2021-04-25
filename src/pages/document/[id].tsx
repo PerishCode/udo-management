@@ -8,17 +8,22 @@ export default function Page({
   match: {
     params: { id },
   },
+  location: {
+    query: { schema: schemaId },
+  },
 }) {
   const [document, setDocument] = useState(null)
   const [schema, setSchema] = useState({})
 
   useEffect(() => {
-    DocumentRQ.get(id).then(document_response => {
-      SchemaRQ.get(document_response.schema).then(schema_response => {
-        setSchema(schema_response.content)
-        setDocument(document_response.content)
-      })
-    })
+    SchemaRQ.get(schemaId).then(schema_response =>
+      DocumentRQ.get(id, schemaId, schema_response.content).then(
+        document_response => {
+          setSchema(schema_response.content)
+          setDocument(document_response.content)
+        },
+      ),
+    )
   }, [])
 
   function updateHandler() {

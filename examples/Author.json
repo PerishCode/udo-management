@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "title": "作者",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "姓名"
+    },
+    "sex": {
+      "type": "string",
+      "title": "性别",
+      "enum": ["男", "女"]
+    }
+  }
+}

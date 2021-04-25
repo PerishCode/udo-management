@@ -8,8 +8,23 @@ import { SchemaRQ } from '@/requests'
 export default function Page() {
   const [formData, setFormData] = useState(null)
   const [schema, setSchema] = useState({
-    type: 'string',
-    title: '数据',
+    type: 'object',
+    title: '论文',
+    properties: {
+      title: {
+        type: 'string',
+        title: '标题',
+      },
+      name: {
+        type: 'string',
+        title: '作者',
+      },
+      sign: {
+        type: 'string',
+        title: '贡献',
+        enum: ['第一作者', '第二作者'],
+      },
+    },
   })
   const [id, setId] = useState('')
 

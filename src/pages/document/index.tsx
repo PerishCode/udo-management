@@ -51,7 +51,9 @@ export default function Page({
             header={id}
             extra={
               <>
-                <Button onClick={() => history.push('/document/' + id)}>
+                <Button
+                  onClick={() => history.push('/document/' + id + search)}
+                >
                   编辑
                 </Button>
                 <Button onClick={() => deleteHandler(id)}>删除</Button>
